@@ -3,9 +3,10 @@ import Categories from "./Categories";
 import Sort from "./Sort";
 import ItemPizza from "./ItemPizza";
 
-import pizzaData from "../utils/PizzaData.json";
+// import pizzaData from "../utils/PizzaData.json";
 
-function Main() {
+function Main({ pizzaData }) {
+  console.log(pizzaData)
   return (
     <div class="content">
       <div class="container">
