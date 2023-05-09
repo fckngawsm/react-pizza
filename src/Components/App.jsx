@@ -28,7 +28,6 @@ function App() {
       <div class="wrapper">
         <Header />
         <div class="content">
-          <div class="container">
             <Routes>
               <Route
                 path="/"
@@ -37,7 +36,6 @@ function App() {
               <Route path="*" element={<NotFound />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>
-          </div>
         </div>
       </div>
     </div>

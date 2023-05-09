@@ -7,7 +7,7 @@ import Skeleton from "../Components/Skeleton";
 function Home({ pizzaData, isLoading }) {
   console.log(pizzaData);
   return (
-    <>
+    <div class="container">
       <div class="content__top">
         <Categories />
         <Sort />
@@ -27,7 +27,7 @@ function Home({ pizzaData, isLoading }) {
               />
             ))}
       </div>
-    </>
+    </div>
   );
 }
 
