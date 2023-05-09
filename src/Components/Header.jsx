@@ -1,19 +1,23 @@
 import React from "react";
 
-import logo from '../images/pizza-logo.svg'
+import logo from "../images/pizza-logo.svg";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="header">
       <div className="container">
         <div className="header__logo">
-          <img width="38" src={logo} alt="Pizza logo" />
-          <div>
-            <h1>React Pizza</h1>
-            <p>самая вкусная пицца во вселенной</p>
-          </div>
+          <Link to="/">
+            <img width="38" src={logo} alt="Pizza logo" />
+            <div>
+              <h1>React Pizza</h1>
+              <p>самая вкусная пицца во вселенной</p>
+            </div>
+          </Link>
         </div>
         <div className="header__cart">
+          <Link to="/cart">
           <button className="button button--cart">
             <span>520 ₽</span>
             <div className="button__delimiter"></div>
@@ -48,6 +52,7 @@ function Header() {
             </svg>
             <span>3</span>
           </button>
+          </Link>
         </div>
       </div>
     </div>
