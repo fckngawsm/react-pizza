@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { sortItem } from "../utils/sortedItem";
-function Sort() {
-  const [activeItem, setActiveItem] = useState(0);
+function Sort({ value, onClickSort }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="sort">
@@ -19,17 +18,18 @@ function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setIsOpen(!isOpen)} >{sortItem[activeItem]}</span>
+        <span onClick={() => setIsOpen(!isOpen)}>{value.name}</span>
       </div>
       {isOpen && (
         <div className="sort__popup">
           <ul>
-            {sortItem.map((item, idx) => (
+            {sortItem.map((obj) => (
               <li
-                onClick={() => setActiveItem(idx)}
-                className={activeItem === idx ? "active" : ""}
+                key={obj.id}
+                onClick={() => onClickSort(obj)}
+                className={value.property === obj.property ? "active" : ""}
               >
-                {item}
+                {obj.name}
               </li>
             ))}
           </ul>

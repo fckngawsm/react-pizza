@@ -10,12 +10,18 @@ class Api {
     return Promise.reject(`У вас произошла ошибка ${res.staus}`);
   }
 
-  getInitialPizza() {
-    return fetch(`${this._url}/items`, {
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((res) => this._checkAnswerServer(res));
+  getInitialPizza(categoryId, sort, searchValue) {
+    const search = searchValue ? `&search=${searchValue}` : "";
+    return fetch(
+      `${this._url}/items?${
+        categoryId > 0 ? `category=${categoryId}` : ""
+      }&sortBy=${sort.property}&order=desc${search}`,
+      {
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    ).then((res) => this._checkAnswerServer(res));
   }
 }
 
@@ -23,4 +29,4 @@ const api = new Api({
   url: "https://645a677f95624ceb2100f68c.mockapi.io",
 });
 
-export default api
+export default api;

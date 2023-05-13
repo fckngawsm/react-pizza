@@ -13,6 +13,7 @@ function ItemPizza({ title, price, image, sizes, types }) {
           <ul>
             {types.map((type, id) => (
               <li
+                key={id}
                 onClick={() => setActiveType(id)}
                 className={activeType === id ? "active" : ""}
               >
@@ -23,6 +24,7 @@ function ItemPizza({ title, price, image, sizes, types }) {
           <ul>
             {sizes.map((size, id) => (
               <li
+                key={id}
                 onClick={() => setActiveSize(id)}
                 className={activeSize === id ? "active" : ""}
               >

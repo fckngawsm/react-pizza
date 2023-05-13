@@ -339,3 +339,10 @@ body {
     }
   }
 }
+
+.search__input {
+  border: 1px solid rgba($color: #000000, $alpha: 0.1);
+  border-radius: 10px;
+  padding: 12px 20px;
+  width: 300px;
+}

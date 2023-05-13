@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { initialStateCategories } from "../utils/categories";
 
-function Categories() {
-  const [activeCategories, setActiveCategories] = useState(0);
-
+function Categories({ value, onClickCategories }) {
   return (
     <div className="categories">
       <ul>
         {initialStateCategories.map((categories, idx) => (
           <li
             key={idx}
-            onClick={() => setActiveCategories(idx)}
-            className={activeCategories === idx ? "active" : ""}
+            onClick={() => onClickCategories(idx)}
+            className={value === idx ? "active" : ""}
           >
             {categories}
           </li>
