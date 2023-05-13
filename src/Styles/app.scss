@@ -27,7 +27,7 @@ body {
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 10px;
     @media (max-width: 1400px) {
       grid-template-columns: repeat(3, 1fr);
@@ -164,8 +164,6 @@ body {
         line-height: 27px;
         letter-spacing: 0.01em;
       }
-
-
 
       p {
         font-size: 18px;
@@ -345,4 +343,35 @@ body {
   border-radius: 10px;
   padding: 12px 20px;
   width: 300px;
+}
+
+.pagination {
+  li {
+    display: inline-block;
+
+    a {
+      text-align: center;
+      width: 45px;
+      line-height: 42px;
+      height: 45px;
+      border: 1px solid #fe5f1e;
+      border-radius: 30px;
+      margin-right: 10px;
+      cursor: pointer;
+      display: inline-block;
+      color: #fe5f1e;
+
+      &:hover {
+        background-color: #fe5f1e;
+        color: #fff;
+      }
+    }
+  }
+
+  .selected {
+    a {
+      background-color: #fe5f1e;
+      color: #fff;
+    }
+  }
 }

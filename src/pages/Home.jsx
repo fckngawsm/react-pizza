@@ -4,9 +4,10 @@ import Sort from "../Components/Sort";
 import ItemPizza from "../Components/ItemPizza";
 import Skeleton from "../Components/Skeleton";
 import api from "../utils/api";
+import Pagination from "../Components/Pagination";
 
 function Home({ searchValue }) {
-  console.log(searchValue);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pizza, setPizza] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState(0);
@@ -16,7 +17,7 @@ function Home({ searchValue }) {
   });
   useEffect(() => {
     api
-      .getInitialPizza(categories, sortItem, searchValue)
+      .getInitialPizza(categories, sortItem, searchValue, currentPage)
       .then((items) => {
         setPizza(items);
         setIsLoading(false);
@@ -24,7 +25,7 @@ function Home({ searchValue }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [categories, sortItem, searchValue]);
+  }, [categories, sortItem, searchValue, currentPage]);
   return (
     <div className="container">
       <div className="content__top">
@@ -49,6 +50,7 @@ function Home({ searchValue }) {
               />
             ))}
       </div>
+      <Pagination  onChangePage = {(num) =>  setCurrentPage(num)}/>
     </div>
   );
 }

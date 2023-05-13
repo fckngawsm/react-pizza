@@ -10,10 +10,10 @@ class Api {
     return Promise.reject(`У вас произошла ошибка ${res.staus}`);
   }
 
-  getInitialPizza(categoryId, sort, searchValue) {
+  getInitialPizza(categoryId, sort, searchValue, currentPage) {
     const search = searchValue ? `&search=${searchValue}` : "";
     return fetch(
-      `${this._url}/items?${
+      `${this._url}/items?page=${currentPage}&limit=4&${
         categoryId > 0 ? `category=${categoryId}` : ""
       }&sortBy=${sort.property}&order=desc${search}`,
       {
