@@ -12,13 +12,9 @@ function Home({ searchValue }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pizza, setPizza] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [categories, setCategories] = useState(0);
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories.categoryId);
-  const [sortItem, setSortItem] = useState({
-    name: "популярности",
-    property: "rating",
-  });
+  const categories = useSelector((state) => state.filter.categoryId);
+  const sortItem = useSelector((state) => state.filter.sort);
   useEffect(() => {
     api
       .getInitialPizza(categories, sortItem, searchValue, currentPage)
@@ -37,7 +33,7 @@ function Home({ searchValue }) {
           value={categories}
           onClickCategories={(i) => dispatch(setCategoryId(i))}
         />
-        <Sort value={sortItem} onClickSort={(i) => setSortItem(i)} />
+        <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

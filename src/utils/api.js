@@ -15,7 +15,7 @@ class Api {
     return fetch(
       `${this._url}/items?page=${currentPage}&limit=4&${
         categoryId > 0 ? `category=${categoryId}` : ""
-      }&sortBy=${sort.property}&order=desc${search}`,
+      }&sortBy=${sort.sortProperty}&order=desc${search}`,
       {
         headers: {
           "Content-type": "application/json",

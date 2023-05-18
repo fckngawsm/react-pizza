@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { sortItem } from "../utils/sortedItem";
-function Sort({ value, onClickSort }) {
+import { useSelector, useDispatch } from "react-redux";
+import { setSortType } from "../feature/filter/filter-slice";
+function Sort() {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const sortType = useSelector((state) => state.filter.sort);
   return (
     <div className="sort">
       <div className="sort__label">
@@ -18,7 +22,7 @@ function Sort({ value, onClickSort }) {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setIsOpen(!isOpen)}>{value.name}</span>
+        <span onClick={() => setIsOpen(!isOpen)}>{sortType.name}</span>
       </div>
       {isOpen && (
         <div className="sort__popup">
@@ -26,8 +30,8 @@ function Sort({ value, onClickSort }) {
             {sortItem.map((obj) => (
               <li
                 key={obj.id}
-                onClick={() => onClickSort(obj)}
-                className={value.property === obj.property ? "active" : ""}
+                onClick={() => dispatch(setSortType(obj))}
+                className={sortType.sortProperty === obj.property ? "active" : ""}
               >
                 {obj.name}
               </li>
