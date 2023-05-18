@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Categories from "../Components/Categories";
 import Sort from "../Components/Sort";
 import ItemPizza from "../Components/ItemPizza";
 import Skeleton from "../Components/Skeleton";
 import api from "../utils/api";
 import Pagination from "../Components/Pagination";
+import { setCategoryId } from "../feature/filter/filter-slice";
 
 function Home({ searchValue }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pizza, setPizza] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categories, setCategories] = useState(0);
+  // const [categories, setCategories] = useState(0);
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories.categoryId);
   const [sortItem, setSortItem] = useState({
     name: "популярности",
     property: "rating",
@@ -31,7 +35,7 @@ function Home({ searchValue }) {
       <div className="content__top">
         <Categories
           value={categories}
-          onClickCategories={(i) => setCategories(i)}
+          onClickCategories={(i) => dispatch(setCategoryId(i))}
         />
         <Sort value={sortItem} onClickSort={(i) => setSortItem(i)} />
       </div>
@@ -50,7 +54,7 @@ function Home({ searchValue }) {
               />
             ))}
       </div>
-      <Pagination  onChangePage = {(num) =>  setCurrentPage(num)}/>
+      <Pagination onChangePage={(num) => setCurrentPage(num)} />
     </div>
   );
 }
