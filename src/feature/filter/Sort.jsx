@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { sortItem } from "../utils/sortedItem";
+import { sortItem } from "../../utils/sortedItem";
 import { useSelector, useDispatch } from "react-redux";
-import { setSortType } from "../feature/filter/filter-slice";
+import { setSortType } from "./filter-slice";
 function Sort() {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();

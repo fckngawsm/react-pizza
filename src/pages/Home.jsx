@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Categories from "../Components/Categories";
-import Sort from "../Components/Sort";
+import Categories from "../feature/filter/Categories";
+import Sort from "../feature/filter/Sort";
 import ItemPizza from "../Components/ItemPizza";
 import Skeleton from "../Components/Skeleton";
 import api from "../utils/api";
 import Pagination from "../Components/Pagination";
-import { setCategoryId } from "../feature/filter/filter-slice";
+import { setCategoryId, setPagination } from "../feature/filter/filter-slice";
 
 function Home({ searchValue }) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.filter.pageCount);
   const [pizza, setPizza] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ function Home({ searchValue }) {
               />
             ))}
       </div>
-      <Pagination onChangePage={(num) => setCurrentPage(num)} />
+      <Pagination onChangePage={(num) => dispatch(setPagination(num))} />
     </div>
   );
 }

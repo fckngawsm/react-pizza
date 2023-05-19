@@ -1,5 +1,5 @@
 import React from "react";
-import { initialStateCategories } from "../utils/categories";
+import { initialStateCategories } from "../../utils/categories";
 
 function Categories({ value, onClickCategories }) {
   return (
