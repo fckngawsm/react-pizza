@@ -1,0 +1,2 @@
+export const BASE_URL = "https://645a677f95624ceb2100f68c.mockapi.io"
+// export const GET_PIZZA = BASE_URL + `/items?page=${currentPage}&limit=4&${categoryId > 0 ? `category=${categoryId}` : ""}&sortBy=${sort.sortProperty}&order=desc${search}`
