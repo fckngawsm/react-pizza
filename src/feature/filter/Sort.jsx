@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { sortItem } from "../../utils/sortedItem";
 import { useSelector, useDispatch } from "react-redux";
 import { setSortType } from "./filter-slice";
@@ -6,8 +6,18 @@ function Sort() {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const sortType = useSelector((state) => state.filter.sort);
+  const sortRef = useRef();
+  // useEffect(() => {
+  //   document.body.addEventListener("click", (e) => {
+  //     if (!e.path.includes(sortRef.current)) {
+  //       console.log(e.path)
+  //       setIsOpen(false);
+  //     }
+  //   });
+  // }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
@@ -31,7 +41,9 @@ function Sort() {
               <li
                 key={obj.id}
                 onClick={() => dispatch(setSortType(obj))}
-                className={sortType.sortProperty === obj.property ? "active" : ""}
+                className={
+                  sortType.sortProperty === obj.property ? "active" : ""
+                }
               >
                 {obj.name}
               </li>

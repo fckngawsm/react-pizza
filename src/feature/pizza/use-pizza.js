@@ -7,6 +7,7 @@ const usePizza = ({ searchValue }) => {
   const { status } = useSelector(selectPizzaInfo);
   const sortItem = useSelector((state) => state.filter.sort.property);
   const categories = useSelector((state) => state.filter.categoryId);
+  console.log(categories)
   const currentPage = useSelector((state) => state.filter.pageCount);
   const dispatch = useDispatch();
   useEffect(() => {

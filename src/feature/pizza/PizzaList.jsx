@@ -1,6 +1,6 @@
 import React from "react";
 import Skeleton from "../../Components/Skeleton";
-import ItemPizza from "../../Components/ItemPizza";
+import ItemPizza from "./ItemPizza";
 import usePizza from "./use-pizza";
 
 function PizzaList({ searchValue }) {
